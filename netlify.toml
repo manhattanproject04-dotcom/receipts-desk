@@ -1,0 +1,26 @@
+[build]
+  publish = "public"
+  # No build step: the site is static files plus one function.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# These apply to the static files. The /api/data function sets its own headers.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex, nofollow"
+
+# Pick up edits to the page, script and styles without a hard refresh.
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
