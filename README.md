@@ -89,14 +89,15 @@ statuses use the default colour until added to `public/styles.css`
 
 ## Key art
 
-Put a 16:9 image at `public/hero.jpg` and redeploy. Until then the overview
-shows a labelled empty frame.
+Put a 16:9 image at `public/hero.jpg` and push it to GitHub. Until then the
+overview shows a plain banner; once the image exists it becomes a 16:9 frame.
 
-## Going public
+## Visibility
 
-The site currently asks search engines not to index it (`robots.txt`, a
-`noindex` header and meta tag). It is still reachable by anyone with the URL.
-Remove those three when you want it indexed.
+The site allows search engines to index it. Who can open it is controlled in
+Netlify (project page → Make public / Visitor access), not in this code. To
+hide it from search again, set `robots.txt` to `Disallow: /` and add an
+`X-Robots-Tag = "noindex, nofollow"` header in `netlify.toml`.
 
 ## Local preview and tests
 

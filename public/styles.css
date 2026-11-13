@@ -74,7 +74,10 @@ nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--mage
 /* ---- hero: 16:9 key-art slot ---- */
 .hero { position: relative; aspect-ratio: 16 / 9; max-height: 520px; width: 100%; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(135deg, #0b2a33, #1a1030 70%, #2a0f2c); }
 .hero-placeholder { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px; color: var(--muted); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; background-image: repeating-linear-gradient(135deg, transparent 0 22px, rgba(255, 255, 255, 0.025) 22px 23px); padding-bottom: 20%; }
-.hero-placeholder small { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: none; }
+.hero.no-art { aspect-ratio: auto; max-height: none; padding-top: 0; }
+.hero.no-art .hero-placeholder { inset: 0; height: 100%; aspect-ratio: auto; }
+.hero.no-art .hero-img { display: none; }
+.hero.no-art .hero-copy { position: relative; padding: 64px 28px 28px; background: none; }
 .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-copy { position: absolute; inset: auto 0 0 0; padding: 60px 28px 24px; background: linear-gradient(transparent, rgba(6, 22, 27, 0.92) 55%); }
 .hero-stats { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 14px 0 0; font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }

@@ -148,8 +148,8 @@
 
     const hero = h(
       "section",
-      { class: "hero", "aria-label": "Key art" },
-      h("div", { class: "hero-placeholder" }, h("span", {}, "Key art slot · 16:9"), h("small", {}, "Add public/hero.jpg to fill this frame")),
+      { class: "hero no-art" },
+      h("div", { class: "hero-placeholder", "aria-hidden": "true" }),
       h("img", { class: "hero-img", src: "/hero.jpg", alt: "" }),
       h(
         "div",
@@ -165,7 +165,10 @@
         ),
       ),
     );
-    hero.querySelector(".hero-img").addEventListener("error", (e) => e.target.remove());
+    // Without public/hero.jpg the hero is a plain banner; with it, a 16:9 frame.
+    const art = hero.querySelector(".hero-img");
+    art.addEventListener("load", () => hero.classList.remove("no-art"));
+    art.addEventListener("error", () => art.remove());
 
     const tierSection = (title, cadence, list) =>
       list.length &&
