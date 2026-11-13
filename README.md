@@ -38,13 +38,11 @@ the static files, or the JSON sent to the browser.
 ## How refresh works
 
 The browser calls `/api/data`. Netlify's CDN caches that response for
-**10 minutes**, then keeps serving the cached copy for up to a day while it
-fetches a fresh one in the background. So:
+**5 minutes**. After that, the next page load reads Notion again (about half a
+second slower) and caches the new copy. So:
 
-- Notion is queried about once per 10 minutes at most, however many page views.
-- An edit in Notion shows up on the site within roughly 10 minutes. The first
-  load after the 10 minutes may still show the old copy; the next load has
-  the new one.
+- Notion is queried at most about once per 5 minutes, however many page views.
+- An edit in Notion shows up within 5 minutes; reload the page to see it.
 - A new deploy clears the cache immediately.
 - No scheduled rebuilds, so refreshing uses no deploys.
 

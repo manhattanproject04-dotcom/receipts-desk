@@ -464,7 +464,7 @@
       desk = body;
       const when = new Date(desk.generatedAt);
       document.getElementById("pulled").textContent =
-        `Data pulled from Notion ${when.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}. Edits in Notion appear after the next refresh, about every 10 minutes.`;
+        `Data pulled from Notion ${when.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}. Edits in Notion appear here within 5 minutes; reload the page to see them.`;
       render();
     } catch (err) {
       const [head, help] = ERRORS[err.reason] || ERRORS.notion_unavailable;
